@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Achados e Perdidos</title>
+
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+</head>
+
+<body>
+  <header class="cabecalho">
+    <div class="container cabecalho-conteudo">
+      <a href="/" class="logo">
+        <span class="logo-icone">🔎</span>
+        Achados e Perdidos
+      </a>
+
+      <nav aria-label="Navegação principal">
+        <a href="#objetos">Objetos</a>
+        <a href="#como-funciona">Como funciona</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="etiqueta">Sistema de Achados e Perdidos</span>
+
+        <h1>Perdeu alguma coisa?</h1>
+
+        <p>
+          Consulte os objetos encontrados, cadastre itens
+          e ajude a devolver pertences aos seus donos.
+        </p>
+
+        <a href="#objetos" class="botao botao-primario">
+          Encontrar um objeto
+        </a>
+      </div>
+    </section>
+
+    <div class="container layout-principal">
+      <section id="objetos" class="secao-objetos">
+        <div class="secao-titulo">
+          <h2>Objetos encontrados</h2>
+          <p>Confira os itens cadastrados no sistema.</p>
+        </div>
+
+        <form id="form-busca" class="filtros">
+          <label for="campo-busca">Buscar objeto</label>
+
+          <input
+            id="campo-busca"
+            name="busca"
+            type="search"
+            placeholder="Ex.: mochila, chave, celular"
+          >
+
+          <label for="filtro-status">Situação</label>
+
+          <select id="filtro-status" name="status">
+            <option value="">Todos</option>
+            <option value="disponivel">Disponíveis</option>
+            <option value="devolvido">Devolvidos</option>
+          </select>
+
+          <button type="submit" class="botao botao-primario">
+            Buscar
+          </button>
+        </form>
+
+        <p
+          id="estado-listagem"
+          class="estado-listagem"
+          role="status"
+          aria-live="polite"
+        >
+          Carregando objetos...
+        </p>
+
+        <div id="lista-objetos" class="grade-objetos"></div>
+      </section>
+
+      <aside class="painel-conta">
+        <section id="painel-login" class="cartao">
+          <h2>Entrar na conta</h2>
+          <p>Acesse para cadastrar ou reivindicar objetos.</p>
+
+          <form id="form-login">
+            <label for="login-email">E-mail</label>
+            <input
+              id="login-email"
+              type="email"
+              required
+              autocomplete="username"
+            >
+
+            <label for="login-senha">Senha</label>
+            <input
+              id="login-senha"
+              type="password"
+              required
+              autocomplete="current-password"
+            >
+
+            <button
+              id="botao-login"
+              class="botao botao-primario"
+              type="submit"
+            >
+              Entrar
+            </button>
+          </form>
+
+          <p id="mensagem-login" role="status" aria-live="polite"></p>
+
+          <button id="mostrar-cadastro" class="botao-link" type="button">
+            Criar uma conta
+          </button>
+        </section>
+
+        <section id="painel-cadastro" class="cartao" hidden>
+          <h2>Criar conta</h2>
+
+          <form id="form-cadastro">
+            <label for="cadastro-nome">Nome completo</label>
+            <input id="cadastro-nome" type="text" required>
+
+            <label for="cadastro-email">E-mail</label>
+            <input id="cadastro-email" type="email" required>
+
+            <label for="cadastro-senha">Senha</label>
+            <input
+              id="cadastro-senha"
+              type="password"
+              required
+              autocomplete="new-password"
+            >
+
+            <button class="botao botao-primario" type="submit">
+              Cadastrar
+            </button>
+          </form>
+
+          <p id="mensagem-cadastro" role="status" aria-live="polite"></p>
+
+          <button id="voltar-login" class="botao-link" type="button">
+            Já tenho uma conta
+          </button>
+        </section>
+
+        <section id="painel-usuario" class="cartao" hidden>
+          <h2>Minha conta</h2>
+          <p id="nome-usuario"></p>
+          <p id="papel-usuario"></p>
+
+          <button id="botao-sair" class="botao botao-secundario">
+            Sair da conta
+          </button>
+        </section>
+
+        <section id="painel-novo-objeto" class="cartao" hidden>
+          <h2>Cadastrar objeto encontrado</h2>
+
+          <form id="form-objeto">
+            <label for="objeto-titulo">Nome do objeto</label>
+            <input id="objeto-titulo" type="text" required>
+
+            <label for="objeto-descricao">Descrição</label>
+            <textarea id="objeto-descricao" rows="3"></textarea>
+
+            <label for="objeto-local">Local encontrado</label>
+            <input id="objeto-local" type="text" required>
+
+            <label for="objeto-data">Data encontrada</label>
+            <input id="objeto-data" type="date" required>
+
+            <button class="botao botao-primario" type="submit">
+              Cadastrar objeto
+            </button>
+          </form>
+
+          <p id="mensagem-objeto" role="status" aria-live="polite"></p>
+        </section>
+      </aside>
+    </div>
+
+    <section id="como-funciona" class="container como-funciona">
+      <h2>Como funciona?</h2>
+
+      <div class="etapas">
+        <article>
+          <h3>1. Encontre</h3>
+          <p>Pesquise os objetos cadastrados no sistema.</p>
+        </article>
+
+        <article>
+          <h3>2. Reivindique</h3>
+          <p>Entre na sua conta para solicitar um objeto.</p>
+        </article>
+
+        <article>
+          <h3>3. Devolva</h3>
+          <p>O responsável confirma a devolução do item.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Achados e Perdidos — Projeto AP2 de Desenvolvimento Web</p>
+    </div>
+  </footer>
+</body>
+</html>
